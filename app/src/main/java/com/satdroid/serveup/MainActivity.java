@@ -68,6 +68,7 @@ ImageView bgimage;
                 Intent isignem = new Intent(MainActivity.this, Choicepage.class);
                 isignem.putExtra("Home", "Email");
                 startActivity(isignem);
+
             }
         });
 
@@ -84,8 +85,9 @@ ImageView bgimage;
             @Override
             public void onClick(View v) {
                 Intent isignnew = new Intent(MainActivity.this, Choicepage.class);
-                isignnew.putExtra("Hello", "New");
+                isignnew.putExtra("Home", "New");
                 startActivity(isignnew);
+
             }
         });
 

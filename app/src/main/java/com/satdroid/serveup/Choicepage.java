@@ -54,20 +54,20 @@ public class Choicepage extends AppCompatActivity {
             {
                 Intent loginemaildonor=new Intent(Choicepage.this,Donorloginemail.class);
             startActivity(loginemaildonor);
-            finish();
+
             }
             if(type.equals("Phone"))
             {
                 Intent loginphonedonor=new Intent(Choicepage.this,Donorloginphone.class);
                 startActivity(loginphonedonor);
-                finish();
+
             }
 
-            if(type.equals("Signup"))
+            if(type.equals("New"))
             {
                 Intent DonorRegister=new Intent(Choicepage.this,Donorregister.class);
                 startActivity(DonorRegister);
-                finish();
+
             }
         }
     });
@@ -80,20 +80,20 @@ public class Choicepage extends AppCompatActivity {
             {
                 Intent loginemailngo=new Intent(Choicepage.this,NGOloginemail.class);
                 startActivity(loginemailngo);
-                finish();
+
             }
             if(type.equals("Phone"))
             {
                 Intent loginphonengo=new Intent(Choicepage.this,NGOloginphone.class);
                 startActivity(loginphonengo);
-                finish();
+
             }
 
-            if(type.equals("Signup"))
+            if(type.equals("New"))
             {
                 Intent NgoRegister=new Intent(Choicepage.this,NGOregister.class);
                 startActivity(NgoRegister);
-                finish();
+
             }
         }
     });

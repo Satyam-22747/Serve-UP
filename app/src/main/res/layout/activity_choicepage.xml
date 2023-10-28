@@ -33,7 +33,7 @@ android:outlineSpotShadowColor="#DD2C00"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:background="#fff"
-        android:text="Sign in as Donor"
+        android:text="Connect as Donor"
         android:id="@+id/donor"
         android:textStyle="bold"
         android:textColor="#FF6D00"/>
@@ -43,7 +43,7 @@ android:outlineSpotShadowColor="#DD2C00"
         android:layout_margin="20dp"
         android:id="@+id/NGO"
         android:background="#fff"
-        android:text="Sign in as Ngo"
+        android:text="Connect as Ngo"
         android:textStyle="bold"
         android:textColor="#FF6D00"/>
 
