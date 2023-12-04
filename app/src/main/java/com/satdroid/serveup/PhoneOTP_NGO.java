@@ -1,0 +1,175 @@
+package com.satdroid.serveup;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
+import com.google.firebase.auth.PhoneAuthProvider;
+
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
+
+public class PhoneOTP_NGO extends AppCompatActivity {
+
+    String verificationCode;
+    AppCompatButton loginbtn_phone,resendOTPbtn;
+
+    String phoneNumber;
+    EditText otpInput;
+    ProgressBar pgbar_phone;
+
+    TextView resendOTPTimertextview;
+    PhoneAuthProvider.ForceResendingToken resendingToken;
+    FirebaseAuth mauth=FirebaseAuth.getInstance();
+
+    long timeoutSeconds = 120L;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_phone_otp_ngo);
+
+
+        otpInput=findViewById(R.id.phoneLoginOtp_NGO);
+        loginbtn_phone=findViewById(R.id.phoneOtPNext_btn_NGO);
+        pgbar_phone=findViewById(R.id.pgBar_NGO);
+        resendOTPbtn=findViewById(R.id.phoneOtPNext_btn_NGO);
+        resendOTPTimertextview=findViewById(R.id.phoneOtpTextview_NGO);
+
+        phoneNumber=getIntent().getExtras().getString("PhoneNumber_NGO");
+        sendOtp(phoneNumber,false);
+        loginbtn_phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String enteredOTP_NGO=otpInput.getText().toString();
+                PhoneAuthCredential credential=PhoneAuthProvider.getCredential(verificationCode,enteredOTP_NGO);
+                signIn(credential);
+            }
+        });
+
+        resendOTPbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendOtp(phoneNumber,true);
+            }
+        });
+
+
+
+    }
+    void setInprogress(boolean inProgress) {
+        if(inProgress){
+            pgbar_phone.setVisibility(View.VISIBLE);
+            loginbtn_phone.setVisibility(View.GONE);
+        }
+        else{
+            pgbar_phone.setVisibility(View.GONE);
+            loginbtn_phone.setVisibility(View.VISIBLE);
+        }
+
+    }
+
+    void sendOtp(String phoneNumber, boolean isResend)
+    {
+        startResendTimer();
+        setInprogress(true);
+        PhoneAuthOptions.Builder builder=
+                PhoneAuthOptions.newBuilder(mauth)
+                        .setPhoneNumber(phoneNumber)
+                        .setTimeout(120L, TimeUnit.SECONDS)
+                        .setActivity(this)
+                        .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                            @Override
+                            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+                                signIn(phoneAuthCredential);
+                                setInprogress(false);
+
+                            }
+
+                            @Override
+                            public void onVerificationFailed(@NonNull FirebaseException e) {
+                                AndroidUtil.showToast(getApplicationContext(),"verificaiton failed");
+                                setInprogress(false);
+                            }
+
+                            @Override
+                            public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                                super.onCodeSent(s, forceResendingToken);
+                                verificationCode=s;
+                                resendingToken=forceResendingToken;
+                                AndroidUtil.showToast(getApplicationContext(),"OTP sent sucessfully");
+                                setInprogress(false);
+                            }
+                        });
+        if(isResend){
+            PhoneAuthProvider.verifyPhoneNumber(builder.setForceResendingToken(resendingToken).build());
+        }
+        else{
+            PhoneAuthProvider.verifyPhoneNumber(builder.build());
+        }
+    }
+
+    void signIn(PhoneAuthCredential phoneAuthCredential){
+
+        setInprogress(true);
+        mauth.signInWithCredential(phoneAuthCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                setInprogress(false);
+                if(task.isSuccessful()){
+                    AndroidUtil.showToast(getApplicationContext(),"OTP verified");
+                    Intent inext=new Intent(PhoneOTP_NGO.this, NGO_panel_bottomNavigationview.class);
+                    startActivity(inext);
+                    finish();
+
+                }
+                else
+                {
+                    AndroidUtil.showToast(getApplicationContext(),"OTP verifiacaition failed");
+                }
+            }
+        });
+
+    }
+
+    void startResendTimer() {
+        resendOTPbtn.setEnabled(false);
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                timeoutSeconds--;
+                resendOTPTimertextview.setText("Resend OTP in " + timeoutSeconds + " seconds");
+                if (timeoutSeconds <= 0) {
+                    timeoutSeconds = 120L;
+                    timer.cancel();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            resendOTPbtn.setEnabled(true);
+                        }
+                    });
+                }
+            }
+        },0,1000);
+    }
+
+
+
+}

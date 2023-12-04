@@ -8,51 +8,76 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".Donorregister">
-<TextView
-    android:layout_width="100dp"
-    android:layout_height="40dp"
-    android:layout_marginBottom="20dp"
-    android:text="Enter Donor Details"
-    android:textAlignment="center"
-    android:textColor="#000000"
-    android:background="#fff"/>
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="20dp"
+       android:textAlignment="center"
+        android:text="Enter Donor Details"
+        android:textColor="#000000"
+        android:background="@drawable/donor_ngo_detail_textbox"/>
+
+    <androidx.cardview.widget.CardView
+    android:layout_width="330dp"
+    android:layout_height="500dp"
+    app:cardCornerRadius="20dp">
+
 <ScrollView
     android:layout_width="290dp"
     android:layout_height="400dp"
-    android:background="#fff">
+    android:background="#fff"
+    android:layout_gravity="center">
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <EditText
+<com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/firstName_donor">
+
+    <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="First Name"
-        android:id="@+id/firstName"
         android:inputType="text"/>
-    <EditText
+</com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lastName_donor">
+    <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="last Name"
-        android:id="@+id/lastName"
         android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/pincode_donor">
+    <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="PIN Code"
-        android:id="@+id/pincode"
         android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/email_donor">
+    <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email"
         android:drawableLeft="@drawable/baseline_email_24"
-        android:id="@+id/email_chef"
         android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,39 +89,63 @@
             app:ccp_showFlag="true"
             app:ccp_showNameCode="false"
             app:ccp_showFullName="false"
-            android:id="@+id/country_code"/>
-
-        <EditText
+            android:id="@+id/country_code_donor"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/phone_donor">
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:hint="Phone"
-            android:id="@+id/phone_chef"
             android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
-    <EditText
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/address1_donor">
+    <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Address Line1"
-        android:id="@+id/address1"
         android:inputType="text"/>
-    <EditText
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/address2_donor">
+    <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Address Line2"
-        android:id="@+id/address2"
         android:inputType="text"/>
-    <EditText
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/password_donor">
+    <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
-        android:id="@+id/password_chef"
         android:inputType="textPassword"/>
-    <EditText
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cnfm_password_donor">
+    <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Confirm Password"
-        android:id="@+id/cnfm_password_chef"
         android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -107,6 +156,8 @@
     android:background="#64DD17"
     android:layout_height="wrap_content"
     android:text="Register"
+        android:layout_marginTop="20dp"
+        android:id="@+id/btn_register_donor"
     android:textColor="#fff"/>
 
     <TextView
@@ -131,6 +182,7 @@
             android:background="#DD2C00"
             android:layout_height="wrap_content"
             android:text="Email"
+            android:id="@+id/signin_email_donor"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:textColor="#fff"/>
@@ -139,13 +191,13 @@
             android:background="#2962FF"
             android:layout_height="wrap_content"
             android:text="Phone"
+            android:id="@+id/signin_phone_donor"
             android:layout_marginTop="10dp"
             android:textColor="#fff"/>
     </LinearLayout>
 </LinearLayout>
 
 </LinearLayout>
-
-
 </ScrollView>
+</androidx.cardview.widget.CardView>
 </LinearLayout>

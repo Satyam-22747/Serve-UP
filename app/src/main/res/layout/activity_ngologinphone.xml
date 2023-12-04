@@ -1,40 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00C853"
+    android:background="#0091EA"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".Donorloginphone">
+    tools:context=".NGOloginphone">
 
     <TextView
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:text="Donor Login Phone"
-        android:textColor="#000"
+        android:text="NGO Login Phone"
         android:background="#fff"
         android:textSize="25sp"
         android:layout_marginTop="150dp"
-        android:layout_marginBottom="5dp"
         android:textAlignment="center"/>
-
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="400dp"
+        android:layout_marginTop="5dp"
         android:background="#fff"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Verify phone number"
-            android:textColor="#00C853"
-            android:layout_marginTop="20dp"
             android:textSize="20sp"
-            android:background="#fff"
+            android:textColor="#0091EA"
             android:textAlignment="center"
+            android:layout_marginTop="50dp"
             android:textStyle="bold"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,21 +42,20 @@
             <com.hbb20.CountryCodePicker
                 android:layout_width="140dp"
                 android:layout_height="match_parent"
-                android:id="@+id/CCPphonetext_ngo"/>
+                android:id="@+id/CCPphone_NGO"/>
             <EditText
                 android:layout_width="170dp"
                 android:layout_height="match_parent"
-                android:id="@+id/PhoneNotext_ngo"
+                android:id="@+id/PhoneNumber_NGO"
                 android:inputType="number"/>
-
         </LinearLayout>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
+            android:id="@+id/btnphoneOTP_NGO"
+            android:background="#0091EA"
             android:layout_marginTop="20dp"
-            android:id="@+id/btnphoneOTP_ngo"
-            android:background="#00C853"
             android:text="Send OTP"
             android:textColor="#fff"/>
         <TextView
@@ -66,6 +63,7 @@
             android:layout_height="wrap_content"
             android:text="Don't have an account? Sign Up"
             android:textAlignment="center"
+            android:id="@+id/new_account_NGO"
             android:layout_marginTop="20dp"/>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -75,7 +73,7 @@
             android:layout_marginTop="10dp">
 
             <TableRow
-                android:id="@+id/tblrow1_ngo_ph_login"
+                android:id="@+id/tblrow1_d_ph_login"
                 android:layout_width="107dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="10dp"
@@ -86,13 +84,12 @@
                 android:textAlignment="center"
                 android:text="OR"/>
             <TableRow
-                android:id="@+id/tblrow2_ngo_ph_login"
+                android:id="@+id/tblrow2_d_ph_login"
                 android:layout_width="107dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="10dp"
                 android:background="#000000"/>
         </LinearLayout>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,11 +103,13 @@
             android:layout_height="30dp"
             android:background="#EA431A"
             android:layout_gravity="center"
-            android:id="@+id/ngologinemail"
+            android:gravity="center"
+            android:id="@+id/NGO_login_email"
             android:layout_marginTop="20dp"
             android:text="Email"
             android:textColor="#ffff"
             android:drawableLeft="@drawable/baseline_email_24"/>
 
     </LinearLayout>
+
 </LinearLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/Home"
+    android:icon="@drawable/baseline_home_24"
+    android:title="Home"/>
+
+    <item
+        android:id="@+id/Pending_Request"
+        android:icon="@drawable/baseline_pending_request_24"
+        android:title="Pending Request"/>
+    <item
+        android:id="@+id/completed"
+        android:icon="@drawable/baseline_dataset_24"
+        android:title="Completed"/>
+    <item
+        android:id="@+id/Publish_Item"
+        android:icon="@drawable/baseline_publish_item_24"
+        android:title="Publish Dish"/>
+
+
+</menu>
