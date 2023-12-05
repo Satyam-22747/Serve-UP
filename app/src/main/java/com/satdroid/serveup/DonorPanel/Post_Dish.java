@@ -42,7 +42,7 @@ import java.util.UUID;
 
 public class Post_Dish extends AppCompatActivity {
 
-    ImageButton imageButton;
+  /*  ImageButton imageButton;
     AppCompatButton post_dish_btn;
     TextInputLayout desc,qty,foodname;
     String description, quantity, FoodName;
@@ -55,13 +55,13 @@ public class Post_Dish extends AppCompatActivity {
     FirebaseAuth fauth;
     StorageReference ref;
     String DonorId, RandomUid, Addressline1, Addressline2;
-
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_dish);
 
-        storage=FirebaseStorage.getInstance();
+  /*      storage=FirebaseStorage.getInstance();
         storageReference=storage.getReference();
         desc=findViewById(R.id.description_donor);
         qty=findViewById(R.id.food_quantity);
@@ -111,10 +111,10 @@ public class Post_Dish extends AppCompatActivity {
         } catch (Exception e)
         {
             Log.e("Error: ",e.getMessage());
-        }
+        }*/
     }
 
-    private void uploadImage()
+  /*  private void uploadImage()
     {
         if(imageUri!=null)
         {
@@ -241,5 +241,5 @@ public class Post_Dish extends AppCompatActivity {
         }
 
         super.onActivityResult(requestCode, resultCode, data);
-    }
+    }*/
 }
